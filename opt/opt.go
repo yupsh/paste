@@ -5,12 +5,14 @@ type Delimiter string
 
 // Boolean flag types with constants
 type SerialFlag bool
+
 const (
 	Serial   SerialFlag = true
 	NoSerial SerialFlag = false
 )
 
 type ZeroFlag bool
+
 const (
 	Zero   ZeroFlag = true
 	NoZero ZeroFlag = false
