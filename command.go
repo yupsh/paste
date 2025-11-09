@@ -8,13 +8,13 @@ import (
 	"os"
 	"strings"
 
-	yup "github.com/gloo-foo/framework"
+	gloo "github.com/gloo-foo/framework"
 )
 
-type command yup.Inputs[string, flags]
+type command gloo.Inputs[string, flags]
 
-func Paste(parameters ...any) yup.Command {
-	cmd := command(yup.Initialize[string, flags](parameters...))
+func Paste(parameters ...any) gloo.Command {
+	cmd := command(gloo.Initialize[string, flags](parameters...))
 	// Set default delimiter
 	if cmd.Flags.Delimiter == "" {
 		cmd.Flags.Delimiter = "\t"
@@ -22,7 +22,7 @@ func Paste(parameters ...any) yup.Command {
 	return cmd
 }
 
-func (p command) Executor() yup.CommandExecutor {
+func (p command) Executor() gloo.CommandExecutor {
 	return func(ctx context.Context, stdin io.Reader, stdout, stderr io.Writer) error {
 		// Get file paths from positional parameters
 		filePaths := p.Positional
